@@ -53,3 +53,5 @@ The ominous security drone moves way too fast for you to run and catch up with i
 ```
 
 You figured that these numbers contain information on where your friend is being transferred to... **what does it say?**
+
+The code that y'all discovered and Oliver hacked a little is contained in the file `olivers-code.c`...
