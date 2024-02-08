@@ -7,11 +7,14 @@ While exploring the spaceship you and Oliver find a conveniently human-standard 
 Wait! You notice that the drive stores data for an [ELF file](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) (~~how convenient that us humans already know what ELF files are~~). You decompile the data and find that the drive contains the following lines of C code:
 
 ```c
+// uint64_t is a a unsigned 64bit integer (min = 0, max = 2^64-1). It is also known as a `unsigned long long` in other languages
 uint64_t *encrypt(uint64_t a, uint64_t b, char *c)
 {
+    // the two lines below allocate an array with a length of MAX_MESSAGE_LENGTH and set everything = 0
     uint64_t *d = (uint64_t *)malloc(MAX_MESSAGE_LENGTH * sizeof(uint64_t));
     memset(d, 0, MAX_MESSAGE_LENGTH * sizeof(uint64_t));
 
+    // this is the bulk of the function
     for (int i = 0; i < MAX_MESSAGE_LENGTH; i = -~i)
     {
         d[i] = (uint64_t)c[i] * a + b;
@@ -26,9 +29,11 @@ uint64_t *encrypt(uint64_t a, uint64_t b, char *c)
         }
     }
 
+    // return the array 
     return d;
 }
 ```
+> 🤔 They surely love bitwise operators
 
 **It seems to be an algorithm of sorts for the aliens to encrypt their messages**.
 
